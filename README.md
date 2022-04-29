@@ -11,6 +11,7 @@ INITIAL SETUP:
 * Create frontend/client folder:
     - npx create-react-app client
     - In package.json add: "proxy": "http://localhost:8000",
+    - yarn add styled-components react-router-dom react-icons moment
 
 * Create backend/server folder:
     - yarn init -y 
