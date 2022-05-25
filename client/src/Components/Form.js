@@ -80,7 +80,10 @@ const Container = styled.div`
   text-align: center;
   color: black;
   margin-top: 100px;
-  width: 100%;
+  margin-left: 40%;
+  max-width: 2000px;
+  min-width: 600px;
+  width: 30%;
   height: 100%;
 
   > header {
