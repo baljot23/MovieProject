@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
+import Form from "./Form";
 import { FaSearch } from "react-icons/fa";
 
 const Header = () => {
@@ -15,7 +16,7 @@ const Header = () => {
       <SearchLogo>
         <FaSearch />
       </SearchLogo>
-      <Avatar>Profile Icon</Avatar>
+      <Avatar to="/form">Profile Icon</Avatar>
     </Conatiner>
   );
 };
@@ -23,7 +24,7 @@ const Header = () => {
 const Logo = styled(Link)`
   margin-left: 10px;
   margin-right: 20px;
-  color: lightskyblue;
+  color: white;
   font-size: 25px;
   text-decoration: none;
 `;
@@ -67,5 +68,6 @@ const Conatiner = styled.div`
   color: white;
   padding: 30px;
   display: flex;
+  opacity: 0.8;
 `;
 export default Header;

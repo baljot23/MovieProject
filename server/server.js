@@ -5,7 +5,7 @@ const express = require("express");
 const morgan = require("morgan");
 const cors = require("cors");
 
-// const {} = require("./handlers");
+const { getAllMovies } = require("./handlers");
 
 express()
   // Below are methods that are included in express(). We chain them for convenience.
@@ -21,6 +21,8 @@ express()
 
   // Nothing to modify above this line
   // ---------------------------------
+
+  .get("/movies/:pageNum", getAllMovies)
 
   // ---------------------------------
   // Nothing to modify below this line

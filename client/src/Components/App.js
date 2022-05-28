@@ -39,6 +39,6 @@ const App = () => {
 
 const Container = styled.div`
   height: 1000px;
-  background: linear-gradient(to bottom, #0000cc 14%, #9999ff 118%);
+  background: linear-gradient(to bottom, #8e0e00 14%, #1f1c18 118%);
 `;
 export default App;
