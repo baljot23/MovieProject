@@ -30,6 +30,22 @@ const getAllMovies = async (req, res) => {
     });
 };
 
+// Movie Genres
+
+const getMovieGenres = async (req, res) => {
+  const data = req.body;
+
+  axios
+    .get(
+      `https://api.themoviedb.org/3/genre/movie/list?api_key=c626dda80ad8ca9817006a0ef907444e&language=en-US`
+    )
+    .then((response) => {
+      console.log(response.data);
+      res.status(200).json({ status: 200, data: response.data });
+    });
+};
+
 module.exports = {
   getAllMovies,
+  getMovieGenres,
 };
