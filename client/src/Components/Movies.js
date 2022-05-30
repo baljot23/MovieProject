@@ -23,99 +23,80 @@ const Movies = () => {
 
   return (
     <div>
-      {movies?.map((movie) => {
-        if (movie?.genre_ids?.includes(28)) {
-          return (
-            <div>
-              {" "}
-              <h1>Action</h1>
-              <img
-                src={"https://image.tmdb.org/t/p/w500" + movie?.poster_path}
-              />
-            </div>
-          );
-        } else if (movie?.genre_ids?.includes(12)) {
-          return (
-            <div>
-              <h1>Adventure</h1>
-              <img
-                src={"https://image.tmdb.org/t/p/w500" + movie?.poster_path}
-              />
-            </div>
-          );
-        } else if (movie?.genre_ids?.includes(16)) {
-          return (
-            <div>
-              <h1>Animation</h1>
-              <img
-                src={"https://image.tmdb.org/t/p/w500" + movie?.poster_path}
-              />
-            </div>
-          );
-        } else if (movie?.genre_ids?.includes(35)) {
-          return (
-            <div>
-              <h1>Comedy</h1>
-              <img
-                src={"https://image.tmdb.org/t/p/w500" + movie?.poster_path}
-              />
-            </div>
-          );
-        } else if (movie?.genre_ids?.includes(80)) {
-          return (
-            <div>
-              <h1>Crime</h1>
-              <img
-                src={"https://image.tmdb.org/t/p/w500" + movie?.poster_path}
-              />
-            </div>
-          );
-        } else if (movie?.genre_ids?.includes(99)) {
-          return (
-            <div>
-              <h1>Documentary</h1>
-              <img
-                src={"https://image.tmdb.org/t/p/w500" + movie?.poster_path}
-              />
-            </div>
-          );
-        } else if (movie?.genre_ids?.includes(18)) {
-          return (
-            <div>
-              <h1>Drama</h1>
-              <img
-                src={"https://image.tmdb.org/t/p/w500" + movie?.poster_path}
-              />
-            </div>
-          );
-        } else if (movie?.genre_ids?.includes(10751)) {
-          return (
-            <div>
-              <h1>Family</h1>
-              <img
-                src={"https://image.tmdb.org/t/p/w500" + movie?.poster_path}
-              />
-            </div>
-          );
-        }
-      })}
+      <div>
+        <h1>Action</h1>
+        <div className="flex ">
+          <button
+            onClick={() => {
+              setPageNum(pageNum - 1);
+            }}
+          >
+            Previous
+          </button>
+          {movies?.map((movie) => {
+            let featuredImages =
+              "https://image.tmdb.org/t/p/w500" + movie?.poster_path;
 
-      <button
-        onClick={() => {
-          setPageNum(pageNum - 1);
-        }}
-        className="bg-transparent hover:bg-red-700 text-red-700 font-semibold hover:text-white py-2 px-4 border border-black hover:border-transparent rounded"
-      >
-        Prev Page
-      </button>
-      <button
-        onClick={() => {
-          setPageNum(pageNum + 1);
-        }}
-        className="bg-transparent hover:bg-red-700 text-red-700 font-semibold hover:text-white py-2 px-4 border border-black hover:border-transparent rounded"
-      >
-        Next Page
-      </button>
+            console.log(featuredImages);
+            if (movie?.genre_ids?.includes(28)) {
+              return (
+                <div className="max-w-screen-xl m-auto">
+                  <div className="w-full relative select-none">
+                    <img src={featuredImages} />
+
+                    <div className=" w-full top-1/2 transform -translate-y-1/2 flex justify-between items-start px-3"></div>
+                  </div>
+                </div>
+              );
+            }
+          })}
+
+          <button
+            onClick={() => {
+              setPageNum(pageNum + 1);
+            }}
+          >
+            Next
+          </button>
+        </div>
+      </div>
+      <div>
+        <h1>Action</h1>
+        <div className="flex ">
+          <button
+            onClick={() => {
+              setPageNum(pageNum - 1);
+            }}
+          >
+            Previous
+          </button>
+          {movies?.map((movie) => {
+            let featuredImages =
+              "https://image.tmdb.org/t/p/w500" + movie?.poster_path;
+
+            console.log(featuredImages);
+            if (movie?.genre_ids?.includes(28)) {
+              return (
+                <div className="max-w-screen-xl m-auto">
+                  <div className="w-full relative select-none">
+                    <img src={featuredImages} />
+
+                    <div className="absolute w-full top-1/2 transform -translate-y-1/2 flex justify-between items-start px-3"></div>
+                  </div>
+                </div>
+              );
+            }
+          })}
+
+          <button
+            onClick={() => {
+              setPageNum(pageNum + 1);
+            }}
+          >
+            Next
+          </button>
+        </div>
+      </div>
     </div>
   );
 };
