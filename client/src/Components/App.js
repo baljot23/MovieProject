@@ -12,7 +12,9 @@ import TvShows from "./TvShows";
 import Movies from "./Movies";
 import Header from "./Header";
 import Footer from "./Footer";
-import Form from "./Form";
+import Signup from "./Form/Signup";
+import Login from "./Form/Login";
+import ForgotPassword from "./Form/ForgotPassword";
 import MyList from "./MyList";
 import styled from "styled-components";
 
@@ -24,8 +26,10 @@ const App = () => {
         <Header />
         <Container>
           <Routes>
-            <Route exact path="/form" element={<Form />} />
-            <Route exact path="/" element={<HomePage />} />
+            <Route exact path="/" element={<Signup />} />
+            <Route exact path="/login" element={<Login />} />
+            <Route exact path="/forgot-password" element={<ForgotPassword />} />
+            <Route exact path="/home" element={<HomePage />} />
             <Route path="/TvShows" element={<TvShows />} />
             <Route path="/Movies" element={<Movies />} />
             <Route path="/MyList" element={<MyList />} />

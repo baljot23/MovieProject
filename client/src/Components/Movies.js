@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { MdChevronLeft, MdChevronRight } from "react-icons/md";
 
 const Movies = () => {
   const [movies, setMovies] = useState();
@@ -21,81 +22,49 @@ const Movies = () => {
       });
   }, []);
 
+  const slideLeft = () => {
+    let slider = document.getElementById("slider");
+    slider.scrollLeft = slider.scrollLeft - 500;
+  };
+
+  const slideRight = () => {
+    let slider = document.getElementById("slider");
+    slider.scrollRight = slider.scrollRight - 500;
+  };
   return (
     <div>
-      <div>
-        <h1>Action</h1>
-        <div className="flex ">
-          <button
-            onClick={() => {
-              setPageNum(pageNum - 1);
-            }}
-          >
-            Previous
-          </button>
+      <h2 className="text-white font-bold md:text-xl p-4">All Movies</h2>
+      <div className="relative flex items-cente group">
+        <MdChevronLeft
+          onClick={slideLeft}
+          size={40}
+          className="bg-white black mt-10 rounded-full absolute opacity-50 hover:opactiy-100 cursor-pointer z-10 hidden group-hover:block"
+        />
+        <div
+          id={"slider"}
+          className=" w-full h-full overflow-x-scroll whitespace-nowrap scroll-smooth scrollbar-hide relative"
+        >
           {movies?.map((movie) => {
-            let featuredImages =
-              "https://image.tmdb.org/t/p/w500" + movie?.poster_path;
-
-            console.log(featuredImages);
-            if (movie?.genre_ids?.includes(28)) {
-              return (
-                <div className="max-w-screen-xl m-auto">
-                  <div className="w-full relative select-none">
-                    <img src={featuredImages} />
-
-                    <div className=" w-full top-1/2 transform -translate-y-1/2 flex justify-between items-start px-3"></div>
-                  </div>
+            return (
+              <div className="w-[160px] sm:w-[200px] md:w-[240px] lg:w-[280px] inline-block cursor-pointer relative p-2">
+                <img
+                  className="w-full h-auto block"
+                  src={"https://image.tmdb.org/t/p/w500" + movie?.backdrop_path}
+                />
+                <div className="absolute top-0 left-0 w-full h-full hover:bg-black/80 opacity-0 hover:opacity-100 text-white">
+                  <p className="white-space-normal text-xs md:text-sm font-bold flex justify-center items-center h-full text-center">
+                    {movie?.title}
+                  </p>
                 </div>
-              );
-            }
+              </div>
+            );
           })}
-
-          <button
-            onClick={() => {
-              setPageNum(pageNum + 1);
-            }}
-          >
-            Next
-          </button>
         </div>
-      </div>
-      <div>
-        <h1>Action</h1>
-        <div className="flex ">
-          <button
-            onClick={() => {
-              setPageNum(pageNum - 1);
-            }}
-          >
-            Previous
-          </button>
-          {movies?.map((movie) => {
-            let featuredImages =
-              "https://image.tmdb.org/t/p/w500" + movie?.poster_path;
-
-            console.log(featuredImages);
-            if (movie?.genre_ids?.includes(28)) {
-              return (
-                <div className="max-w-screen-xl m-auto">
-                  <div className="w-full relative select-none">
-                    <img src={featuredImages} />
-
-                    <div className="absolute w-full top-1/2 transform -translate-y-1/2 flex justify-between items-start px-3"></div>
-                  </div>
-                </div>
-              );
-            }
-          })}
-
-          <button
-            onClick={() => {
-              setPageNum(pageNum + 1);
-            }}
-          >
-            Next
-          </button>
-        </div>
+        <MdChevronRight
+          onClick={slideRight}
+          size={40}
+          className="bg-white mt-10 right-0 rounded-full absolute opacity-50 hover:opactiy-100 cursor-pointer z-10 hidden group-hover:block"
+        />
       </div>
     </div>
   );

@@ -11,12 +11,24 @@ const options = {
   useUnifiedTopology: true,
 };
 
+//Trending:
+const getTrending = async (req, res) => {
+  const data = req.params;
+
+  axios
+    .get(
+      `https://api.themoviedb.org/3/trending/movie/day?api_key=c626dda80ad8ca9817006a0ef907444e`
+    )
+    .then((response) => {
+      console.log(response);
+      res.status(200).json({ status: 200, data: response.data });
+    });
+};
+
 //Most Popular Movies:
 
 const getAllMovies = async (req, res) => {
   const data = req.params;
-
-  console.log(data.pageNum);
 
   axios
     .get(
@@ -25,7 +37,6 @@ const getAllMovies = async (req, res) => {
       }`
     )
     .then((response) => {
-      console.log(response);
       res.status(200).json({ status: 200, data: response.data });
     });
 };
@@ -33,14 +44,11 @@ const getAllMovies = async (req, res) => {
 // Movie Genres
 
 const getMovieGenres = async (req, res) => {
-  const data = req.body;
-
   axios
     .get(
       `https://api.themoviedb.org/3/genre/movie/list?api_key=c626dda80ad8ca9817006a0ef907444e&language=en-US`
     )
     .then((response) => {
-      console.log(response.data);
       res.status(200).json({ status: 200, data: response.data });
     });
 };
@@ -48,4 +56,5 @@ const getMovieGenres = async (req, res) => {
 module.exports = {
   getAllMovies,
   getMovieGenres,
+  getTrending,
 };
